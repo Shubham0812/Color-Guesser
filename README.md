@@ -9,6 +9,11 @@ Color guessing game where you are given random colors and you have to guess it c
 - CSS3
 - Javascript
 
+## How to Play?
+
+You can find the game [here.](https://shubham0812.github.io/Color-Guesser/)
+
+
 ## How to use?
 
  #### Prerequisites
@@ -22,9 +27,7 @@ Color guessing game where you are given random colors and you have to guess it c
 3. To run the page locally run  `index.html` .
 
 
-
-
-## Code Sample
+## Code Example
 
     function generateRandomColors() {
 	    for (let i =  0; i < gameSize; i++) {
