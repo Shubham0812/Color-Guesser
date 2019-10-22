@@ -1,7 +1,10 @@
 boxes = document.querySelectorAll(".boxes")
-guess = document.querySelector(".colorGuess")
+guess = document.querySelector(".color-guess")
 winnerScore = document.querySelector(".processing-overlay")
 scoreMessage = document.querySelector(".processing")
+gameOver = document.querySelector(".game-over")
+boxesContainer = document.querySelector(".container")
+retryButton = document.querySelector(".retry")
 
 gameSizes = {
     "easy": {
@@ -14,7 +17,7 @@ gameSizes = {
     }
 }
 
-mode = "hard"
+mode = "easy"
 
 life = 0
 
@@ -23,19 +26,33 @@ correctColor = ""
 var colors = [];
 
 
+retryButton.addEventListener("click", reset)
+
 function colorizeBoxes() {
+
+    for (let i = 0; i < gameSizes[mode].tiles; i++) {
+        var colorButton = document.createElement("DIV")
+        colorButton.classList.add("boxes")
+        boxesContainer.appendChild(colorButton)
+    }
+
+    boxes = document.querySelectorAll(".boxes")
+
+
     for (let i = 0; i < boxes.length; i++) {
         this.boxes[i].style.background = colors.pop();
         this.boxes[i].addEventListener("click", function () {
 
             if (life === 0) {
                 console.log("Game over")
+                gameOver.classList.add("show")
+                boxesContainer.classList.add("hide")
             }
 
             if (this.style.background === correctColor) {
                 winnerScore.style.background = correctColor
                 var color = correctColor.replace("rgb(", "").replace(")", "").split(',')
-                scoreMessage.style.backgroundColor = `rgba(${color[0] + 10}, ${color[1] + 10}, ${color[2] + 10}, 0.5)`
+                scoreMessage.style.backgroundColor = `rgba(${color[0] + 10}, ${color[1] + 10}, ${color[2] + 10}, 0.2)`
                 winnerScore.classList.add("show-message")
                 setTimeout(function () {
                     winnerScore.classList.remove("show-message")
@@ -48,11 +65,12 @@ function colorizeBoxes() {
                 setTimeout(function () {
 
                     box.parentNode.removeChild(box)
-                }, 600)
+                }, 500)
                 life -= 1
                 if (life === 0) {
                     console.log("Game over")
-
+                    gameOver.classList.add("show")
+                    boxesContainer.classList.add("hide")
                 }
             }
         })
@@ -91,6 +109,16 @@ colorizeBoxes();
 
 function reset() {
     colors = [];
+    life = 0;
+    gameOver.classList.remove("show")
+    boxesContainer.classList.remove("hide")
+    for (let i = 0; i < gameSizes[mode].tiles / 2; i++) {
+        var box = document.querySelector(".boxes")
+        boxesContainer.removeChild(box)
+    }
+
     generateRandomColors();
     colorizeBoxes();
+
+
 }

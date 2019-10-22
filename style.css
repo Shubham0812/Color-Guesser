@@ -1,10 +1,9 @@
 * {
   margin: 0;
+  font-family: "Turret Road", cursive;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background: rgba(35, 66, 66, 0.9);
   color: white;
   width: 100%;
@@ -20,6 +19,11 @@ main {
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
+  font-family: "Turret Road", cursive;
+}
+
+.color-guess {
+  margin-top: 8px;
 }
 
 .container {
@@ -46,38 +50,11 @@ main {
   display: block;
 }
 
-@keyframes fadeDown {
-  from {
-    opacity: 0.5;
-  }
-
-  to {
-    transform: translateY(100px);
-    opacity: 0;
-    display: none !important;
-  }
-}
-
 .scale-out {
   animation: scaleOut 1s ease !important;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-direction: normal !important;
-}
-
-@keyframes scaleOut {
-  0% {
-    transform: scale(1.5);
-    opacity: 1;
-  }
-  60% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
 }
 
 .processing-overlay {
@@ -116,19 +93,89 @@ main {
   width: 100%;
 }
 
-.hide{
+.message {
+  font-size: 120px;
+  height: 120px;
+  line-height: 110px;
+  color: #ecf0f1;
+  margin-top: 10%;
+  text-shadow: 2px 2px #2c3e50;
+  background: hsla(0, 0%, 100%, 0.2);
+  padding: 30px 0;
+  width: 100%;
+  font-family: "Turret Road", cursive;
+}
+
+.game-over {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-over > button {
+  width: 200px;
+  padding: 12px;
+  margin-top: 32px;
+  border-radius: 8px;
+  font-size: 28px;
+  transition: 0.5s;
+  outline: none;
+}
+
+.game-over > button:hover {
+  color: white;
+  background: black;
+  cursor: pointer;
+}
+
+.game-over {
+  display: none;
+}
+
+.hide {
   display: none !important;
+}
+
+.show {
+  display: flex !important;
 }
 
 @media only screen and (max-width: 768px) {
   .container {
     margin-top: 20px;
   }
-  .header{
+  .header {
     height: 100%;
   }
   .boxes {
     width: 180px;
     height: 180px;
+  }
+}
+
+@keyframes scaleOut {
+  0% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translateY(100px);
+    opacity: 0;
+    display: none !important;
   }
 }
