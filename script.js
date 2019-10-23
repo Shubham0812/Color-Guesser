@@ -6,6 +6,8 @@ gameOver = document.querySelector(".game-over")
 boxesContainer = document.querySelector(".container")
 retryButton = document.querySelector(".retry")
 message = document.querySelector(".message")
+guessNumber = document.querySelector(".guess-number")
+remainingGuess = document.querySelector(".remaining-guess")
 
 gameSizes = {
     "easy": {
@@ -60,6 +62,8 @@ function colorizeBoxes() {
                     gameOver.classList.add("show")
                     message.innerHTML = "You Won!"
                     boxesContainer.classList.add("hide")
+                    remainingGuess.classList.add("hide")
+
                 }, 950)
 
             }
@@ -71,10 +75,13 @@ function colorizeBoxes() {
                     box.parentNode.removeChild(box)
                 }, 500)
                 life -= 1
+                guessNumber.innerHTML = life
+
                 if (life === 0) {
                     console.log("Game over")
                     gameOver.classList.add("show")
                     boxesContainer.classList.add("hide")
+                    remainingGuess.classList.add("hide")
                 }
             }
         })
@@ -105,6 +112,7 @@ function generateRandomColors() {
     })[0]
     guess.innerHTML = correctColor
     life = gameSizes[mode].tries
+    guessNumber.innerHTML = life
 }
 
 generateRandomColors();
@@ -116,6 +124,8 @@ function reset() {
     life = 0;
     gameOver.classList.remove("show")
     boxesContainer.classList.remove("hide")
+    remainingGuess.classList.remove("hide")
+
     message.innerHTML = "Game Over!"
     var remainingBoxes = document.querySelectorAll(".boxes")
     for (let i = 0; i < remainingBoxes.length; i++) {
