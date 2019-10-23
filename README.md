@@ -3,6 +3,9 @@
 
 Color guessing game where you are given random colors and you have to guess it correctly to win.
 
+You can find the game [here.](https://shubham0812.github.io/Color-Guesser/)
+
+
 
 ## Technologies Used
 - HTML5
@@ -40,8 +43,6 @@ Color guessing game where you are given random colors and you have to guess it c
     }
 
 ## Credits
-
-You can find the game [here.](https://shubham0812.github.io/Color-Guesser/)
 
 **©** **Shubham Kumar Singh** | *2019*
 
