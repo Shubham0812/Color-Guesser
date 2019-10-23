@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  /* box-sizing: inherit; */
+  box-sizing: inherit;
   font-family: "Turret Road", cursive;
 }
 
@@ -13,7 +13,7 @@ body {
 
 main {
   z-index: 2;
-  /* min-height: 100vh; */
+  min-height: 100vh;
 }
 
 .header {
