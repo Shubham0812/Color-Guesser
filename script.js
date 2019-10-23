@@ -5,6 +5,7 @@ scoreMessage = document.querySelector(".processing")
 gameOver = document.querySelector(".game-over")
 boxesContainer = document.querySelector(".container")
 retryButton = document.querySelector(".retry")
+message = document.querySelector(".message")
 
 gameSizes = {
     "easy": {
@@ -17,7 +18,7 @@ gameSizes = {
     }
 }
 
-mode = "easy"
+mode = "hard"
 
 life = 0
 
@@ -56,6 +57,9 @@ function colorizeBoxes() {
                 winnerScore.classList.add("show-message")
                 setTimeout(function () {
                     winnerScore.classList.remove("show-message")
+                    gameOver.classList.add("show")
+                    message.innerHTML = "You Won!"
+                    boxesContainer.classList.add("hide")
                 }, 950)
 
             }
@@ -112,7 +116,9 @@ function reset() {
     life = 0;
     gameOver.classList.remove("show")
     boxesContainer.classList.remove("hide")
-    for (let i = 0; i < gameSizes[mode].tiles / 2; i++) {
+    message.innerHTML = "Game Over!"
+    var remainingBoxes = document.querySelectorAll(".boxes")
+    for (let i = 0; i < remainingBoxes.length; i++) {
         var box = document.querySelector(".boxes")
         boxesContainer.removeChild(box)
     }
