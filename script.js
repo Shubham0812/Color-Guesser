@@ -24,34 +24,25 @@ gameSizes = {
     }
 }
 
-mode = "hard"
-
-life = 0
-
-
-correctColor = ""
+var mode;
+var life;
+var correctColor;
 var colors = [];
 
 
 retryButton.addEventListener("click", reset)
 
 function colorizeBoxes() {
-
     for (let i = 0; i < gameSizes[mode].tiles; i++) {
         var colorButton = document.createElement("DIV")
         colorButton.classList.add("boxes")
         boxesContainer.appendChild(colorButton)
     }
-
     boxes = document.querySelectorAll(".boxes")
-
-
     for (let i = 0; i < boxes.length; i++) {
         this.boxes[i].style.background = colors.pop();
         this.boxes[i].addEventListener("click", function () {
-
             if (life === 0) {
-                console.log("Game over")
                 gameOver.classList.add("show")
                 boxesContainer.classList.add("hide")
             }
@@ -69,20 +60,18 @@ function colorizeBoxes() {
                     remainingGuess.classList.add("hide")
 
                 }, 950)
-
             }
             else {
                 this.classList.add("fade-down");
                 var box = this
                 setTimeout(function () {
-
                     box.parentNode.removeChild(box)
                 }, 500)
                 life -= 1
                 guessNumber.innerHTML = life
 
                 if (life === 0) {
-                    console.log("Game over")
+                    message.innerHTML = "Game Over!"
                     gameOver.classList.add("show")
                     boxesContainer.classList.add("hide")
                     remainingGuess.classList.add("hide")
@@ -92,19 +81,7 @@ function colorizeBoxes() {
     }
 }
 
-
-function contrastCheck() {
-    var color = correctColor.replace("rgb(", "").replace(")", "").split(',')
-    if ((color[0] * 0.299 + color[1] * 0.587 + color[2] * 0.114) < 0.1) {
-        return true
-    }
-    else {
-        return false
-    }
-}
-
 function generateRandomColors() {
-    console.log("size tiles", gameSizes[mode].tiles)
     for (let i = 0; i < gameSizes[mode].tiles; i++) {
         let r = Math.floor(Math.random() * 256)
         let g = Math.floor(Math.random() * 256)
@@ -127,7 +104,6 @@ function setup() {
     easyBox.addEventListener("click", function () {
         initializeGame(easyBox.innerHTML)
     })
-
     hardBox.addEventListener("click", function () {
         initializeGame(hardBox.innerHTML)
     })
