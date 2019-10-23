@@ -12,20 +12,6 @@ You can find the game [here.](https://shubham0812.github.io/Color-Guesser/)
 - CSS3
 - Javascript
 
-## How to Contribute?
-
- #### Prerequisites
- - An active internet connection.
- - Visual Studio Code.
-
-#### Steps
-
-1. Fork the repository.
-2. Clone the repository
-3. cd into the directory.
-4. Make changes and open a PR.
-
-
 ## Code Example
 
     function generateRandomColors() {
