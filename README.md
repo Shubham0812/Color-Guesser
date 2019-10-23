@@ -3,28 +3,27 @@
 
 Color guessing game where you are given random colors and you have to guess it correctly to win.
 
+You can find the game [here.](https://shubham0812.github.io/Color-Guesser/)
+
+
 
 ## Technologies Used
 - HTML5
 - CSS3
 - Javascript
 
-## How to Play?
-
-You can find the game [here.](https://shubham0812.github.io/Color-Guesser/)
-
-
-## How to use?
+## How to Contribute?
 
  #### Prerequisites
  - An active internet connection.
  - Visual Studio Code.
 
-#### Usage
+#### Steps
 
-1. Download or clone the repository.
-2. cd into the directory.
-3. To run the page locally run  `index.html` .
+1. Fork the repository.
+2. Clone the repository
+3. cd into the directory.
+4. Make changes and open a PR.
 
 
 ## Code Example
@@ -46,4 +45,5 @@ You can find the game [here.](https://shubham0812.github.io/Color-Guesser/)
 ## Credits
 
 **©** **Shubham Kumar Singh** | *2019*
+
 
