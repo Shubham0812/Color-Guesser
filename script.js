@@ -6,6 +6,7 @@ gameOver = document.querySelector(".game-over")
 boxesContainer = document.querySelector(".container")
 retryButton = document.querySelector(".retry")
 message = document.querySelector(".message")
+messageScore = document.querySelector(".message-score")
 guessNumber = document.querySelector(".guess-number")
 remainingGuess = document.querySelector(".remaining-guess")
 startup = document.querySelector(".startup")
@@ -16,11 +17,13 @@ hardBox = document.querySelector(".hard-box")
 gameSizes = {
     "easy": {
         "tries": 2,
-        "tiles": 3
+        "tiles": 3,
+        "score": 2
     },
     "hard": {
         "tries": 3,
-        "tiles": 6
+        "tiles": 6,
+        "score": 3
     }
 }
 
@@ -28,6 +31,7 @@ var mode;
 var life;
 var correctColor;
 var colors = [];
+var scores = 0;
 
 
 retryButton.addEventListener("click", reset)
@@ -48,6 +52,8 @@ function colorizeBoxes() {
             }
 
             if (this.style.background === correctColor) {
+                scores += gameSizes[mode].score
+                console.log(scores)
                 winnerScore.style.background = correctColor
                 var color = correctColor.replace("rgb(", "").replace(")", "").split(',')
                 scoreMessage.style.backgroundColor = `rgba(${color[0] + 10}, ${color[1] + 10}, ${color[2] + 10}, 0.2)`
@@ -56,9 +62,9 @@ function colorizeBoxes() {
                     winnerScore.classList.remove("show-message")
                     gameOver.classList.add("show")
                     message.innerHTML = "You Won!"
+                    messageScore.classList.add("hide")
                     boxesContainer.classList.add("hide")
                     remainingGuess.classList.add("hide")
-
                 }, 950)
             }
             else {
@@ -72,13 +78,19 @@ function colorizeBoxes() {
 
                 if (life === 0) {
                     message.innerHTML = "Game Over!"
+                    messageScore.innerHTML = "Your Score: "+ scores;
                     gameOver.classList.add("show")
+                    messageScore.classList.add("show")
                     boxesContainer.classList.add("hide")
                     remainingGuess.classList.add("hide")
                 }
             }
         })
     }
+}
+
+function countScores() {
+
 }
 
 function generateRandomColors() {
@@ -122,6 +134,9 @@ function initializeGame(modes) {
 
 
 function reset() {
+    if (life === 0) {
+        scores = 0;   
+    }
     colors = [];
     life = 0;
     gameOver.classList.remove("show")
