@@ -8,10 +8,14 @@ retryButton = document.querySelector(".retry")
 message = document.querySelector(".message")
 guessNumber = document.querySelector(".guess-number")
 remainingGuess = document.querySelector(".remaining-guess")
+startup = document.querySelector(".startup")
+easyBox = document.querySelector(".easy-box")
+hardBox = document.querySelector(".hard-box")
+
 
 gameSizes = {
     "easy": {
-        "tries": 1,
+        "tries": 2,
         "tiles": 3
     },
     "hard": {
@@ -100,6 +104,7 @@ function contrastCheck() {
 }
 
 function generateRandomColors() {
+    console.log("size tiles", gameSizes[mode].tiles)
     for (let i = 0; i < gameSizes[mode].tiles; i++) {
         let r = Math.floor(Math.random() * 256)
         let g = Math.floor(Math.random() * 256)
@@ -115,8 +120,29 @@ function generateRandomColors() {
     guessNumber.innerHTML = life
 }
 
-generateRandomColors();
-colorizeBoxes();
+
+
+function setup() {
+    guess.innerHTML = "RGB value will be displayed and you have to guess it to win"
+    easyBox.addEventListener("click", function () {
+        initializeGame(easyBox.innerHTML)
+    })
+
+    hardBox.addEventListener("click", function () {
+        initializeGame(hardBox.innerHTML)
+    })
+}
+
+
+function initializeGame(modes) {
+    startup.classList.add("hide")
+    boxesContainer.classList.remove("hide")
+    remainingGuess.classList.remove("hide")
+    mode = modes.toLowerCase()
+    console.log(mode)
+    generateRandomColors();
+    colorizeBoxes();
+}
 
 
 function reset() {
@@ -125,6 +151,8 @@ function reset() {
     gameOver.classList.remove("show")
     boxesContainer.classList.remove("hide")
     remainingGuess.classList.remove("hide")
+    guess.innerHTML = "RGB value will be displayed and you have to guess it to win"
+
 
     message.innerHTML = "Game Over!"
     var remainingBoxes = document.querySelectorAll(".boxes")
@@ -132,9 +160,10 @@ function reset() {
         var box = document.querySelector(".boxes")
         boxesContainer.removeChild(box)
     }
-
-    generateRandomColors();
-    colorizeBoxes();
-
-
+    startup.classList.remove("hide")
+    boxesContainer.classList.add("hide")
+    remainingGuess.classList.add("hide")
 }
+
+
+setup()

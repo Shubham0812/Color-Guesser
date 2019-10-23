@@ -26,9 +26,8 @@ main {
   margin-top: 8px;
 }
 
-.guess-number{
-    text-shadow: 2px 2px #2c3e50;
-
+.guess-number {
+  text-shadow: 2px 2px #2c3e50;
 }
 
 .container {
@@ -110,7 +109,7 @@ main {
   font-family: "Turret Road", cursive;
 }
 
-.remaining-guess{
+.remaining-guess {
   position: relative;
   display: flex;
   justify-content: flex-end;
@@ -152,6 +151,61 @@ main {
   display: flex !important;
 }
 
+.startup {
+  margin-top: 40px;
+}
+
+.easy-box {
+  width: 250px;
+  height: 250px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 52px;
+  cursor: pointer;
+  color: #222222;
+  /* background: rgba(255, 255, 255, 0.95); */
+  background: linear-gradient(48deg, #ffffff, #ffffcc);
+  background-repeat: no-repeat;
+  transition: 0.5s;
+  border-radius: 10%;
+}
+
+.easy-box:hover {
+  background: linear-gradient(76deg, #000000, #433434);
+  color: white;
+}
+
+.hard-box {
+  margin-left: 32px;
+  width: 250px;
+  height: 250px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 52px;
+  cursor: pointer;
+  color: #222222;
+  /* background: rgba(255, 255, 255, 0.95); */
+  background: linear-gradient(48deg, #ffffff, #ffffcc);
+  background-repeat: no-repeat;
+  transition: 0.5s;
+  border-radius: 10%;
+}
+
+.hard-box:hover {
+  background: linear-gradient(76deg, #000000, #433434);
+  color: white;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+/* Media Queries */
 @media only screen and (max-width: 768px) {
   .container {
     margin-top: 20px;
