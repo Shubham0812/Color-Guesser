@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  /* box-sizing: inherit; */
   font-family: "Turret Road", cursive;
 }
 
@@ -13,12 +13,12 @@ body {
 
 main {
   z-index: 2;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .header {
   height: 100px;
-  background: #f47521;
+  background: rgba(244,117,33, 0.85);
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
@@ -37,10 +37,8 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  max-width: 75%;
-  margin: 0 auto;
-  min-height: calc(100vh - 150px);
+  margin: 0px 13%;
+  margin-top: -10px;
 }
 
 .boxes {
@@ -118,7 +116,8 @@ main {
   position: relative;
   display: flex;
   justify-content: flex-end;
-  padding: 12px 24px;
+  padding: 0 24px;
+  margin-top: 15px;
 }
 
 .game-over {
@@ -179,16 +178,20 @@ main {
   margin: 15px;
 }
 .level-box:nth-child(1) {
-  background: linear-gradient(to bottom, #faa916 60%, #1b1b1e);
+  background: linear-gradient(to bottom, #383988 60%, #383961);
+  transition: 0.5s;
+  opacity: 0.75;
 }
 .level-box:nth-child(2) {
-  background: linear-gradient(to bottom, #96031a 60%, #1b1b1e);
+  background: linear-gradient(to bottom, #fe5f55 60%, #fe5f55);
+  transition: 0.5s;
+  opacity: 0.75;
 }
 .level-box:nth-child(1):hover {
-  background: linear-gradient(to bottom, #fbbb48 60%, #1b1b1e);
+  opacity: 1;
 }
 .level-box:nth-child(2):hover {
-  background: linear-gradient(to bottom, #c80423 60%, #1b1b1e);
+  opacity: 1;
 }
 
 .flex {
