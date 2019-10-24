@@ -46,6 +46,7 @@ function colorizeBoxes() {
     for (let i = 0; i < boxes.length; i++) {
         this.boxes[i].style.background = colors.pop();
         this.boxes[i].addEventListener("click", function () {
+            console.log('Boxes clicked')
             if (life === 0) {
                 gameOver.classList.add("show")
                 boxesContainer.classList.add("hide")

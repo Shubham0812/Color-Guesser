@@ -18,7 +18,7 @@ main {
 
 .header {
   height: 100px;
-  background: rgba(244,117,33, 0.85);
+  background: rgba(244, 117, 33, 0.85);
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
@@ -192,6 +192,10 @@ main {
 }
 .level-box:nth-child(2):hover {
   opacity: 1;
+}
+
+.message-score {
+  font-size: 26px;
 }
 
 .flex {
