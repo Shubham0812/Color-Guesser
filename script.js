@@ -18,12 +18,12 @@ gameSizes = {
     "easy": {
         "tries": 2,
         "tiles": 3,
-        "score": 2
+        "score": 1
     },
     "hard": {
         "tries": 3,
         "tiles": 6,
-        "score": 3
+        "score": 2
     }
 }
 
@@ -64,7 +64,7 @@ function colorizeBoxes() {
                     boxesContainer.classList.add("hide")
                     remainingGuess.classList.add("hide")
                     
-                    initializeGame(easyBox.innerHTML)
+                    initializeGame(mode)
                 }, 950)
             }
             else {
