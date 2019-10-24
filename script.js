@@ -60,11 +60,11 @@ function colorizeBoxes() {
                 winnerScore.classList.add("show-message")
                 setTimeout(function () {
                     winnerScore.classList.remove("show-message")
-                    gameOver.classList.add("show")
-                    message.innerHTML = "You Won!"
                     messageScore.classList.add("hide")
                     boxesContainer.classList.add("hide")
                     remainingGuess.classList.add("hide")
+                    
+                    initializeGame(easyBox.innerHTML)
                 }, 950)
             }
             else {
@@ -123,6 +123,12 @@ function setup() {
 
 
 function initializeGame(modes) {
+    var remainingBoxes = document.querySelectorAll(".boxes")
+    for (let i = 0; i < remainingBoxes.length; i++) {
+        var box = document.querySelector(".boxes")
+        boxesContainer.removeChild(box)
+    }
+    colors = [];
     startup.classList.add("hide")
     boxesContainer.classList.remove("hide")
     remainingGuess.classList.remove("hide")
