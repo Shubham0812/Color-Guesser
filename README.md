@@ -12,6 +12,7 @@ You can find the game [here.](https://shubham0812.github.io/Color-Guesser/)
 - CSS3
 - Javascript
 
+
 ## Code Example
 
     function generateRandomColors() {
@@ -27,9 +28,17 @@ You can find the game [here.](https://shubham0812.github.io/Color-Guesser/)
 	    })[0]
 	    guess.innerHTML = correctColor
     }
+    
+    
+## Contributors / Thanks
 
-## Credits
+ - Gerson Garrido (https://github.com/gersongams)
+ - alam3211 (https://github.com/alam3211)
 
-**©** **Shubham Kumar Singh** | *2019*
+## Having trouble?
+If you are having trouble using this project, please open a new issue and describe your problem.
+
+## Spread the word!
+Liked the project? Just give it a star ⭐️ and spread the word!
 
 

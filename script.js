@@ -6,6 +6,7 @@ gameOver = document.querySelector(".game-over")
 boxesContainer = document.querySelector(".container")
 retryButton = document.querySelector(".retry")
 message = document.querySelector(".message")
+messageScore = document.querySelector(".message-score")
 guessNumber = document.querySelector(".guess-number")
 remainingGuess = document.querySelector(".remaining-guess")
 startup = document.querySelector(".startup")
@@ -18,16 +19,19 @@ gameSizes = {
     "easy": {
         "tries": 4,
         "tiles": 6,
+        "score": 1,
         "palettes": ["rainbow", "mpn65", "tol", "tol-rainbow", "cb-Accent", "cb-Dark2", "cb-Paired", "cb-Set1", "cb-Set2", "sol-accent"]
     },
     "medium": {
         "tries": 3,
         "tiles": 6,
+        "score": 2,
         "palettes": ["diverging", "cb-diverging", "cb-Set2", "cb-Set3", "rainbow", "tol", "sol-base"]
     },
     "hard": {
         "tries": 3,
         "tiles": 9,
+        "score": 3,
         "palettes": ["sequential", "cb-sequential", "cb-Pastel1", "cb-Pastel2"]
     }
 }
@@ -36,6 +40,7 @@ var mode;
 var life;
 var correctColor;
 var colors = [];
+var scores = 0;
 
 retryButton.addEventListener("click", reset)
 
@@ -49,23 +54,26 @@ function colorizeBoxes() {
     for (let i = 0; i < boxes.length; i++) {
         this.boxes[i].style.background = colors.pop();
         this.boxes[i].addEventListener("click", function () {
+            console.log('Boxes clicked')
             if (life === 0) {
                 gameOver.classList.add("show")
                 boxesContainer.classList.add("hide")
             }
 
             if (this.style.background === correctColor) {
+                scores += gameSizes[mode].score
+                console.log(scores)
                 winnerScore.style.background = correctColor
                 var color = correctColor.replace("rgb(", "").replace(")", "").split(',')
                 scoreMessage.style.backgroundColor = `rgba(${color[0] + 10}, ${color[1] + 10}, ${color[2] + 10}, 0.2)`
                 winnerScore.classList.add("show-message")
                 setTimeout(function () {
                     winnerScore.classList.remove("show-message")
-                    gameOver.classList.add("show")
-                    message.innerHTML = "You Won!"
+                    messageScore.classList.add("hide")
                     boxesContainer.classList.add("hide")
                     remainingGuess.classList.add("hide")
-
+                    
+                    initializeGame(mode)
                 }, 950)
             }
             else {
@@ -79,13 +87,19 @@ function colorizeBoxes() {
 
                 if (life === 0) {
                     message.innerHTML = "Game Over!"
+                    messageScore.innerHTML = "Your Score: "+ scores;
                     gameOver.classList.add("show")
+                    messageScore.classList.add("show")
                     boxesContainer.classList.add("hide")
                     remainingGuess.classList.add("hide")
                 }
             }
         })
     }
+}
+
+function countScores() {
+
 }
 
 function generateRandomColors() {
@@ -123,6 +137,12 @@ function setup() {
 
 
 function initializeGame(modes) {
+    var remainingBoxes = document.querySelectorAll(".boxes")
+    for (let i = 0; i < remainingBoxes.length; i++) {
+        var box = document.querySelector(".boxes")
+        boxesContainer.removeChild(box)
+    }
+    colors = [];
     startup.classList.add("hide")
     boxesContainer.classList.remove("hide")
     remainingGuess.classList.remove("hide")
@@ -134,6 +154,9 @@ function initializeGame(modes) {
 
 
 function reset() {
+    if (life === 0) {
+        scores = 0;   
+    }
     colors = [];
     life = 0;
     gameOver.classList.remove("show")
