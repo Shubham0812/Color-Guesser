@@ -34,6 +34,7 @@ You can find the game [here.](https://shubham0812.github.io/Color-Guesser/)
 
  - Gerson Garrido (https://github.com/gersongams)
  - alam3211 (https://github.com/alam3211)
+ - Jens K Vyff (https://github.com/jkvyff)
 
 ## Having trouble?
 If you are having trouble using this project, please open a new issue and describe your problem.
