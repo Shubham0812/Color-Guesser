@@ -10,17 +10,25 @@ guessNumber = document.querySelector(".guess-number")
 remainingGuess = document.querySelector(".remaining-guess")
 startup = document.querySelector(".startup")
 easyBox = document.querySelector(".easy-box")
+mediumBox = document.querySelector(".medium-box")
 hardBox = document.querySelector(".hard-box")
 
 
 gameSizes = {
     "easy": {
-        "tries": 2,
-        "tiles": 3
+        "tries": 4,
+        "tiles": 6,
+        "palettes": ["rainbow", "mpn65", "tol", "tol-rainbow", "cb-Accent", "cb-Dark2", "cb-Paired", "cb-Set1", "cb-Set2", "sol-accent"]
+    },
+    "medium": {
+        "tries": 3,
+        "tiles": 6,
+        "palettes": ["diverging", "cb-diverging", "cb-Set2", "cb-Set3", "rainbow", "tol", "sol-base"]
     },
     "hard": {
         "tries": 3,
-        "tiles": 6
+        "tiles": 9,
+        "palettes": ["sequential", "cb-sequential", "cb-Pastel1", "cb-Pastel2"]
     }
 }
 
@@ -28,7 +36,6 @@ var mode;
 var life;
 var correctColor;
 var colors = [];
-
 
 retryButton.addEventListener("click", reset)
 
@@ -82,27 +89,32 @@ function colorizeBoxes() {
 }
 
 function generateRandomColors() {
-    for (let i = 0; i < gameSizes[mode].tiles; i++) {
-        let r = Math.floor(Math.random() * 256)
-        let g = Math.floor(Math.random() * 256)
-        let b = Math.floor(Math.random() * 256)
-        var color = `rgb(${r}, ${g}, ${b})`
-        colors.push(color)
-    }
-    correctColor = [...colors].sort(function () {
-        return Math.random() - 0.5;
-    })[0]
+    const palettes = palette.listSchemes(gameSizes[mode].palettes)
+    const paletteNum = Math.floor(Math.random()*palettes.length)
+    const choosen = palettes[paletteNum]
+    colors = palette(choosen, gameSizes[mode].tiles).map(color => "#"+color)
+    correctColor = hexToRgb(colors[Math.floor(Math.random()*colors.length)])
     guess.innerHTML = correctColor
     life = gameSizes[mode].tries
     guessNumber.innerHTML = life
 }
 
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    const r = parseInt(result[1], 16)
+    const g = parseInt(result[2], 16)
+    const b = parseInt(result[3], 16)
+    return `rgb(${r}, ${g}, ${b})`
+}
 
 
 function setup() {
     guess.innerHTML = "RGB value will be displayed and you have to guess it to win"
     easyBox.addEventListener("click", function () {
         initializeGame(easyBox.innerHTML)
+    })
+    mediumBox.addEventListener("click", function () {
+        initializeGame(mediumBox.innerHTML)
     })
     hardBox.addEventListener("click", function () {
         initializeGame(hardBox.innerHTML)
@@ -128,7 +140,6 @@ function reset() {
     boxesContainer.classList.remove("hide")
     remainingGuess.classList.remove("hide")
     guess.innerHTML = "RGB value will be displayed and you have to guess it to win"
-
 
     message.innerHTML = "Game Over!"
     var remainingBoxes = document.querySelectorAll(".boxes")

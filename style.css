@@ -166,7 +166,7 @@ main {
 .level-box {
   width: 250px;
   height: 250px;
-  border: 1px solid white;
+  border: 4px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -174,25 +174,28 @@ main {
   cursor: pointer;
   background-repeat: no-repeat;
   transition: 0.5s;
-  border-radius: 10%;
+  border-radius: 5%;
   margin: 15px;
 }
 .level-box:nth-child(1) {
-  background: linear-gradient(to bottom, #383988 60%, #383961);
+  background: linear-gradient(to bottom, #329932 60%, #236b23);
   transition: 0.5s;
   opacity: 0.75;
 }
 .level-box:nth-child(2) {
-  background: linear-gradient(to bottom, #fe5f55 60%, #fe5f55);
+  background: linear-gradient(to bottom, #383988 60%, #383961);
   transition: 0.5s;
   opacity: 0.75;
 }
-.level-box:nth-child(1):hover {
+.level-box:nth-child(3) {
+  background: linear-gradient(to bottom, #ff473c 60%, #cc3830);
+  transition: 0.5s;
+  opacity: 0.75;
+}
+.level-box:hover {
   opacity: 1;
 }
-.level-box:nth-child(2):hover {
-  opacity: 1;
-}
+
 
 .flex {
   display: flex;
