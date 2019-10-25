@@ -29,8 +29,8 @@ gameSizes = {
         "palettes": ["diverging", "cb-diverging", "cb-Set2", "cb-Set3", "rainbow", "tol", "sol-base"]
     },
     "hard": {
-        "tries": 3,
-        "tiles": 9,
+        "tries": 1,
+        "tiles": 6,
         "score": 3,
         "palettes": ["sequential", "cb-sequential", "cb-Pastel1", "cb-Pastel2"]
     }
