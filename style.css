@@ -4,7 +4,8 @@
 }
 
 body {
-  background: rgba(35, 66, 66, 0.9);
+  background-attachment: fixed;
+  background: rgb(231, 250, 244);
   color: white;
   width: 100%;
 }
@@ -14,20 +15,49 @@ main {
 }
 
 .header {
-  height: 100px;
-  background: rgba(34, 34, 34, 0.6);
   text-align: center;
-  padding: 20px;
+  -webkit-animation: color-change 4s infinite;
+  -moz-animation: color-change 4s infinite;
+  -o-animation: color-change 1s infinite;
+  -ms-animation: color-change 1s infinite;
+  animation: color-change 4s infinite;
+  text-shadow: 0 1px 0 #ccc,
+  0 2px 0 #c9c9c9,
+  0 3px 0 #bbb,
+  0 4px 0 #b9b9b9,
+  0 5px 0 #aaa,
+  0 0 5px rgba(0,0,0,.1),
+  0 1px 3px rgba(0,0,0,.3),
+  0 3px 5px rgba(0,0,0,.2),
+  0 5px 10px rgba(0,0,0,.25),
+  0 10px 10px rgba(0,0,0,.2),
+  0 20px 20px rgba(0,0,0,.15);
+  padding: 100px;
   box-sizing: border-box;
   font-family: "Turret Road", cursive;
+  font-size: 32px;
+  position: relative;
+  height: 30%;
+  background: rgb(60,142,255);
+  background: linear-gradient(45deg, rgba(60,142,255,1) 0%, rgba(246,255,135,1) 100%);
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
+}
+@keyframes color-change {
+  0% { color: rgb(255, 217, 0); }
+  50% { color: rgb(0, 162, 255); }
+  100% { color: rgb(255, 217, 0); }
 }
 
 .color-guess {
-  margin-top: 8px;
+  margin-top: 30px;
+  color: #2c3e50;
+  font-size: 24px;
+  text-shadow: none;
 }
 
 .guess-number {
-  text-shadow: 2px 2px #2c3e50;
+  text-shadow: 1px 1px #2c3e50;
 }
 
 .container {
@@ -100,7 +130,7 @@ main {
 .message {
   font-size: 120px;
   line-height: 110px;
-  color: #ecf0f1;
+  color: #2c3e50;
   margin-top: 10%;
   text-shadow: 2px 2px #2c3e50;
   background: hsla(0, 0%, 100%, 0.2);
@@ -111,6 +141,7 @@ main {
 
 .remaining-guess {
   position: relative;
+  color: #2c3e50;
   display: flex;
   justify-content: flex-end;
   margin-right: 24px;
@@ -152,52 +183,58 @@ main {
 }
 
 .startup {
-  margin-top: 40px;
+  margin-top: 100px;
 }
 
 .easy-box {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border: 1px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 52px;
+  font-size: 72px;
   cursor: pointer;
   color: #222222;
-  /* background: rgba(255, 255, 255, 0.95); */
-  background: linear-gradient(48deg, #ffffff, #ffffcc);
+  background: linear-gradient(0deg, #07b92e, #15ff00);
   background-repeat: no-repeat;
   transition: 0.5s;
   border-radius: 10%;
+  margin-right: 15%;
+  position: relative;
 }
 
 .easy-box:hover {
   background: linear-gradient(76deg, #000000, #433434);
   color: white;
+  width: 600px;
+  margin-right: 40%;
 }
 
 .hard-box {
-  margin-left: 32px;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border: 1px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 52px;
+  font-size: 72px;
+  font: bold;
   cursor: pointer;
   color: #222222;
-  /* background: rgba(255, 255, 255, 0.95); */
-  background: linear-gradient(48deg, #ffffff, #ffffcc);
+  background: linear-gradient(0deg, #ff0000, rgb(255, 72, 0));
   background-repeat: no-repeat;
   transition: 0.5s;
   border-radius: 10%;
+  position: absolute;
+  margin-left: 5%;
 }
 
 .hard-box:hover {
   background: linear-gradient(76deg, #000000, #433434);
   color: white;
+  width: 600px;
+  margin-left: 20%;
 }
 
 .flex {
