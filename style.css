@@ -178,20 +178,38 @@ main {
   margin: 15px;
 }
 .level-box:nth-child(1) {
-  background: linear-gradient(to bottom, #329932 60%, #236b23);
+  background: linear-gradient(to bottom, #a3f8a3 60%, #236b23);
   transition: 0.5s;
-  opacity: 0.75;
+  opacity: 0.85;
 }
+
+.level-box:nth-child(1):hover{
+  text-decoration: underline dotted;
+  transform: scaleY(1.07) scaleX(1.07);
+}
+
 .level-box:nth-child(2) {
-  background: linear-gradient(to bottom, #383988 60%, #383961);
+  background: linear-gradient(to bottom, #8c8cf0 60%, #383961);
   transition: 0.5s;
   opacity: 0.75;
 }
+
+.level-box:nth-child(2):hover{
+  text-decoration: underline dotted;
+  transform: scaleY(1.07) scaleX(1.07);
+}
+
 .level-box:nth-child(3) {
-  background: linear-gradient(to bottom, #ff473c 60%, #cc3830);
+  background: linear-gradient(to bottom, #f38781 60%, #cc3830);
   transition: 0.5s;
   opacity: 0.75;
 }
+
+.level-box:nth-child(3):hover{
+  text-decoration: underline dotted;
+  transform: scaleY(1.07) scaleX(1.07);
+}
+
 .level-box:hover {
   opacity: 1;
 }
@@ -249,5 +267,7 @@ main {
     display: none !important;
   }
 }
+
+
 
 /*# sourceMappingURL=style.css.map */
