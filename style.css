@@ -1,17 +1,19 @@
 * {
   margin: 0;
+  padding: 0;
+  box-sizing: inherit;
   font-family: "Turret Road", cursive;
 }
 
 body {
-  background-attachment: fixed;
   background: rgb(231, 250, 244);
-  color: white;
+  color: #fbfffe;
   width: 100%;
 }
 
 main {
   z-index: 2;
+  min-height: 100vh;
 }
 
 .header {
@@ -38,7 +40,6 @@ main {
   font-size: 32px;
   position: relative;
   height: 30%;
-  background: rgb(60,142,255);
   background: linear-gradient(45deg, rgba(60,142,255,1) 0%, rgba(246,255,135,1) 100%);
   border-bottom-left-radius: 50% 20%;
   border-bottom-right-radius: 50% 20%;
@@ -65,6 +66,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0px 13%;
+  margin-top: -10px;
 }
 
 .boxes {
@@ -121,7 +123,7 @@ main {
   top: 50%;
   margin-top: -120px;
   text-shadow: 2px 2px #2c3e50;
-  background: hsla(0, 0%, 100%, 0.2);
+  background: rgba(255, 255, 255, 0.2);
   padding: 30px 0;
   position: absolute;
   width: 100%;
@@ -130,10 +132,9 @@ main {
 .message {
   font-size: 120px;
   line-height: 110px;
-  color: #2c3e50;
-  margin-top: 10%;
+  color:#2c3e50;
   text-shadow: 2px 2px #2c3e50;
-  background: hsla(0, 0%, 100%, 0.2);
+  background: rgba(255, 255, 255, 0.2);
   padding: 30px 0;
   width: 100%;
   font-family: "Turret Road", cursive;
@@ -144,14 +145,16 @@ main {
   color: #2c3e50;
   display: flex;
   justify-content: flex-end;
-  margin-right: 24px;
-  margin-top: 12px;
+  padding: 0 24px;
+  margin-top: 15px;
 }
 
 .game-over {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: calc(100vh - 100px);
+  justify-content: center;
 }
 
 .game-over > button {
@@ -162,12 +165,21 @@ main {
   font-size: 28px;
   transition: 0.5s;
   outline: none;
+  background-repeat: no-repeat;
+  background-position: right center;
+  text-align: center;
+  text-transform: uppercase;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, rgba(246,255,135,0.75)  0%, rgba(60,142,255,0.75) 51%, rgba(246,255,135,0.75) 100%);
 }
 
 .game-over > button:hover {
-  color: white;
-  background: black;
+  color: #2c3e50;
   cursor: pointer;
+  background-position: 0 0, 0 0;
 }
 
 .game-over {
@@ -183,79 +195,96 @@ main {
 }
 
 .startup {
-  margin-top: 100px;
-}
-
-.easy-box {
-  width: 200px;
-  height: 200px;
-  border: 1px solid white;
+  min-height: calc(100vh - 100px);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 72px;
-  cursor: pointer;
-  color: #222222;
-  background: linear-gradient(0deg, #07b92e, #15ff00);
-  background-repeat: no-repeat;
-  transition: 0.5s;
-  border-radius: 10%;
-  margin-right: 15%;
-  position: relative;
 }
 
-.easy-box:hover {
-  background: linear-gradient(76deg, #000000, #433434);
-  color: white;
-  width: 600px;
-  margin-right: 40%;
-}
-
-.hard-box {
-  width: 200px;
-  height: 200px;
-  border: 1px solid white;
+.level-box {
+  width: 250px;
+  height: 250px;
+  border: 4px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 72px;
-  font: bold;
+  font-size: 66px;
   cursor: pointer;
-  color: #222222;
-  background: linear-gradient(0deg, #ff0000, rgb(255, 72, 0));
   background-repeat: no-repeat;
   transition: 0.5s;
-  border-radius: 10%;
-  position: absolute;
-  margin-left: 5%;
+  border-radius: 5%;
+  margin: 15px;
+}
+.level-box:nth-child(1) {
+  background: linear-gradient(#098825, #7ff774);
+  transition: 0.5s;
+  opacity: 0.75;
+
 }
 
-.hard-box:hover {
-  background: linear-gradient(76deg, #000000, #433434);
-  color: white;
-  width: 600px;
-  margin-left: 20%;
+.level-box:nth-child(1):hover{
+  background: linear-gradient(45deg, #098825, #292929);
+  text-decoration: underline dotted;
+  transform: scaleY(1.5) scaleX(1.2);
+}
+
+.level-box:nth-child(2) {
+  background: linear-gradient(#ebb400, #ddaf59);
+  transition: 0.5s;
+  opacity: 0.75;
+}
+
+.level-box:nth-child(2):hover{
+  background: linear-gradient(45deg, #ebb400, #292929);
+  text-decoration: underline dotted;
+  transform: scaleY(1.5) scaleX(1.2);
+}
+
+.level-box:nth-child(3) {
+  background: linear-gradient(#b91111, #ff4800);
+  transition: 0.5s;
+  opacity: 0.75;
+}
+
+.level-box:nth-child(3):hover{
+  background: linear-gradient(45deg, #b91111, #292929);
+  text-decoration: underline dotted;
+  transform: scaleY(1.5) scaleX(1.2);
+}
+
+.level-box:hover {
+  opacity: 1;
+}
+
+.message-score {
+  font-size: 26px;
 }
 
 .flex {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* Media Queries */
 @media only screen and (max-width: 768px) {
   .container {
-    margin-top: 20px;
+    min-height: calc(100vh - 194px);
   }
+
+  .startup {
+    margin: 30px 0;
+  }
+
   .header {
     height: 100%;
   }
+
   .boxes {
     width: 180px;
     height: 180px;
   }
 }
-
 @keyframes scaleOut {
   0% {
     transform: scale(1.5);
@@ -270,15 +299,17 @@ main {
     opacity: 0;
   }
 }
-
 @keyframes fadeDown {
   from {
     opacity: 0.5;
   }
-
   to {
     transform: translateY(100px);
     opacity: 0;
     display: none !important;
   }
 }
+
+
+
+/*# sourceMappingURL=style.css.map */
